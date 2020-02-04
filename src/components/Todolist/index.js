@@ -14,12 +14,17 @@ import { getTasksUndone } from 'src/selectors/tasks';
 const Todolist = () => {
   // mise en place du state
   const [tasks, setTasks] = useState(tasksData);
-  // utilisation
+  const [newTaskLabel, setNewTaskLabel] = useState('coucou Y');
+
+  // définition du nombre de taches non effectuées
   const count = getTasksUndone(tasks).length;
 
   return (
     <div id="todo">
-      <Form />
+      <Form
+        inputValue={newTaskLabel}
+        changeInputValue={setNewTaskLabel}
+      />
       <Counter count={count} />
       <List tasks={tasks} />
     </div>
