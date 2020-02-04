@@ -71,7 +71,8 @@ const Todolist = () => {
 
   const removeTask = (id) => {
     const newTasks = tasks.filter((task) => task.id !== id);
-    // changer le state
+
+    // changer => remplacer le state
     setTasks(newTasks);
   };
 
