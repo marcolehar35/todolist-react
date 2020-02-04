@@ -7,7 +7,12 @@ import classNames from 'classnames';
 import './styles.css';
 
 // == Composant
-const Task = ({ label, done, checkTask }) => {
+const Task = ({
+  id,
+  label,
+  done,
+  checkTask,
+}) => {
   // traitements
   const classCss = classNames('task', {
     // la classe css 'task--done' ne sera présente que si done vaut true
@@ -17,7 +22,7 @@ const Task = ({ label, done, checkTask }) => {
   const handleChange = () => {
     // Je déclenche la fonction qui vient de Todolist
     // Je veux modifier les data du state
-    checkTask();
+    checkTask(id);
   };
 
   return (
@@ -30,6 +35,7 @@ const Task = ({ label, done, checkTask }) => {
 };
 
 Task.propTypes = {
+  id: PropTypes.number.isRequired,
   checkTask: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   done: PropTypes.bool.isRequired,

@@ -48,11 +48,25 @@ const Todolist = () => {
     setNewTaskLabel('');
   };
 
-  const checkTask = () => {
-    console.log('Je veux changer le statut');
-    // traitement
-    // ...
-    // setTasks() pour le state
+  const checkTask = (id) => {
+    const newTasks = tasks.map((task) => {
+      // La tache dont l'id est celle transmise
+      if (task.id === id) {
+        // Changer l'objet
+        // La c'est NON : Je change l'objet ! il me faut une copie
+        // task.done = !task.done;
+
+        // OK : Nouvel objet. Je ne modifie pas, je remplace !
+        return {
+          ...task,
+          done: !task.done,
+        };
+      }
+      return task;
+    });
+
+    // Insérer le nouveau tableau dans le state
+    setTasks(newTasks);
   };
 
   return (
