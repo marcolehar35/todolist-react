@@ -48,6 +48,13 @@ const Todolist = () => {
     setNewTaskLabel('');
   };
 
+  const checkTask = () => {
+    console.log('Je veux changer le statut');
+    // traitement
+    // ...
+    // setTasks() pour le state
+  };
+
   return (
     <div id="todo">
       <Form
@@ -56,7 +63,7 @@ const Todolist = () => {
         addTask={addTask}
       />
       <Counter count={count} />
-      <List tasks={tasks} />
+      <List checkTask={checkTask} tasks={tasks} />
     </div>
   );
 };
