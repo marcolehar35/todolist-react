@@ -1,0 +1,18 @@
+
+.task {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: .5em;
+  padding: 1em .7em;
+  margin: .3em 0;
+  font-size: 1.1em;
+}
+
+.task-label {
+  margin-left: .3em;
+}
+
+.task-label--done {
+  opacity: .5;
+  text-decoration: line-through;
+}
