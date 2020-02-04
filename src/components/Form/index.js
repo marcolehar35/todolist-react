@@ -6,10 +6,14 @@ import PropTypes from 'prop-types';
 import './styles.css';
 
 // == Composant
-const Form = ({ inputValue, changeInputValue }) => {
+const Form = ({ inputValue, changeInputValue, addTask }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('Envoi du formulaire');
+    // Seulement quand le champ n'est pas vide
+    const cleanValue = inputValue.trim();
+    if (cleanValue.length > 0) {
+      addTask();
+    }
   };
 
   const handleChange = (evt) => {
@@ -35,6 +39,7 @@ const Form = ({ inputValue, changeInputValue }) => {
 Form.propTypes = {
   inputValue: PropTypes.string.isRequired,
   changeInputValue: PropTypes.func.isRequired,
+  addTask: PropTypes.func.isRequired,
 };
 
 
