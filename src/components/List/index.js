@@ -8,9 +8,9 @@ import Task from 'src/components/Task';
 // == Composant
 const List = () => (
   <ul id="tasks-list">
-    <Task />
-    <Task />
-    <Task />
+    {/* done équivalent done={true} */}
+    <Task label="Dire bonjour" done />
+    <Task label="Une todo en React" done={false} />
   </ul>
 );
 
