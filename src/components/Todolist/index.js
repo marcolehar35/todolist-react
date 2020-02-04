@@ -11,7 +11,7 @@ import List from 'src/components/List';
 const Todolist = () => (
   <div id="todo">
     <Form />
-    <Counter />
+    <Counter count={123} />
     <List />
   </div>
 );
