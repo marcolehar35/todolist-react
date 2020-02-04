@@ -69,6 +69,12 @@ const Todolist = () => {
     setTasks(newTasks);
   };
 
+  const removeTask = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    // changer le state
+    setTasks(newTasks);
+  };
+
   return (
     <div id="todo">
       <Form
@@ -77,7 +83,7 @@ const Todolist = () => {
         addTask={addTask}
       />
       <Counter count={count} />
-      <List checkTask={checkTask} tasks={tasks} />
+      <List checkTask={checkTask} removeTask={removeTask} tasks={tasks} />
     </div>
   );
 };

@@ -16,3 +16,8 @@
   opacity: .5;
   text-decoration: line-through;
 }
+
+.icon {
+  float: right;
+  cursor: pointer;
+}

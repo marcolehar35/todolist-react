@@ -7,13 +7,14 @@ import './styles.css';
 import Task from 'src/components/Task';
 
 // == Composant
-const List = ({ tasks, checkTask }) => (
+const List = ({ tasks, checkTask, removeTask }) => (
   <ul id="tasks-list">
     {tasks.map((task) => (
       <Task
         key={task.id}
         {...task}
         checkTask={checkTask}
+        removeTask={removeTask}
       />
     ))}
   </ul>
@@ -21,6 +22,7 @@ const List = ({ tasks, checkTask }) => (
 
 List.propTypes = {
   checkTask: PropTypes.func.isRequired,
+  removeTask: PropTypes.func.isRequired,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
