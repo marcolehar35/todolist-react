@@ -22,18 +22,23 @@ class Todolist extends React.Component {
     // On appelle le constructeur du parent : les étapes de création obligatoires de React
     // On fournit les props au constructeur du parent (qu'il les prépare)
     super(props);
-    console.log('constructor : instanciation');
     // Je définis le state du composant (sous forme de classe) dans son constructeur
     // React reconnait la valeur `state` et lui applique un traitement spécifique
+    // le state initial de l'instance (composant)
     this.state = {
-      message: 'coucou',
+      tasks: tasksData,
     };
+
+    console.log('constructor : instanciation');
   }
 
   // Rendu du composant (lié à react)
   render() {
     console.log('render : rendu du composant');
-    const tasks = tasksData;
+    // const tasks = this.state.tasks;
+    // ou avec destructuration :
+    const { tasks } = this.state;
+
     // utilisation d'un selector pour obtenir les tâches non effectuées
     const count = getTasksUndone(tasks).length;
 
