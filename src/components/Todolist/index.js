@@ -12,9 +12,11 @@ import { getTasksUndone } from 'src/selectors/tasks';
 
 // == Composant
 const Todolist = () => {
+  const tasks = tasksData;
   // mise en place du state
-  const [tasks, setTasks] = useState(tasksData);
-  // utilisation
+  // const [tasks, setTasks] = useState(tasksData);
+
+  // utilisation d'un selector pour obtenir les tâches non effectuées
   const count = getTasksUndone(tasks).length;
 
   return (
