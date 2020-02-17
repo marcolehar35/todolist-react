@@ -12,6 +12,14 @@ import { getTasksUndone } from 'src/selectors/tasks';
 
 // console.log(new React.Component)
 // == Composant
+
+// Cycles de vie
+// -------------
+// points de passage pour le composant
+// - constructor : instanciation
+// - render : rendu
+// - componentDidMount : la première construction (composant dans le dom)
+
 // eslint-disable-next-line react/prefer-stateless-function
 class Todolist extends React.Component {
   // == __construct. est appelé lors de l'instanciation : <Todolist /> => new Todolist()
@@ -34,6 +42,20 @@ class Todolist extends React.Component {
     // Je dois "donner" la valeur de this aux méthodes souhaitant l'utiliser
     this.changeInputValue = this.changeInputValue.bind(this);
     // https://i.imgur.com/QgeBt4j.png :+1:
+  }
+
+  // Cycles de vie
+  // componentDidMount similaire à useEffect(() => { ... }, []);
+  // utile pour : ajax, manip sur le DOM, poser des events sur document, définir des timers, ...
+  componentDidMount() {
+    console.log('componentDidMount : composant monté pour la 1ere fois');
+    document.title = this.state.newTaskLabel;
+  }
+
+  // utile pour : manip sur le DOM, poser des events sur document, définir des timers, ...
+  componentDidUpdate() {
+    console.log('componentDidUpdate : composant mit à jour');
+    document.title = this.state.newTaskLabel;
   }
 
   changeInputValue(value) {
