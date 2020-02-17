@@ -22,14 +22,28 @@ class Todolist extends React.Component {
     // On appelle le constructeur du parent : les étapes de création obligatoires de React
     // On fournit les props au constructeur du parent (qu'il les prépare)
     super(props);
+    console.log('constructor : instanciation');
     // Je définis le state du composant (sous forme de classe) dans son constructeur
     // React reconnait la valeur `state` et lui applique un traitement spécifique
     // le state initial de l'instance (composant)
     this.state = {
       tasks: tasksData,
+      newTaskLabel: 'Coucou Y',
     };
 
-    console.log('constructor : instanciation');
+    // Je dois "donner" la valeur de this aux méthodes souhaitant l'utiliser
+    this.changeInputValue = this.changeInputValue.bind(this);
+    // https://i.imgur.com/QgeBt4j.png :+1:
+  }
+
+  changeInputValue(value) {
+    console.log('Todolist :', value);
+
+    // Pour modifier le state de react
+    // on lui donne le fragment de state à changer
+    this.setState({
+      newTaskLabel: value,
+    });
   }
 
   // Rendu du composant (lié à react)
@@ -37,14 +51,14 @@ class Todolist extends React.Component {
     console.log('render : rendu du composant');
     // const tasks = this.state.tasks;
     // ou avec destructuration :
-    const { tasks } = this.state;
+    const { tasks, newTaskLabel } = this.state;
 
     // utilisation d'un selector pour obtenir les tâches non effectuées
     const count = getTasksUndone(tasks).length;
 
     return (
       <div id="todo">
-        <Form />
+        <Form inputValue={newTaskLabel} changeInputValue={this.changeInputValue} />
         <Counter count={count} />
         <List tasks={tasks} />
       </div>
